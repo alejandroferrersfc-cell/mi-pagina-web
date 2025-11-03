@@ -1,17 +1,23 @@
 /* ======== RESET ======== */
-* {
+body, html {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body, html {
-  height: 100%;
+  height: 100dvh; /* ✅ usa el alto visible real */
   width: 100%;
   font-family: 'Segoe UI', sans-serif;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+/* ======== TARJETA CENTRAL ======== */
+.fullscreen-center {
   position: relative;
+  min-height: 100dvh; /* ✅ asegura que se vea en móviles */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  padding: 2rem 1rem;
 }
 
 /* ======== FONDO DE IMÁGENES ======== */
