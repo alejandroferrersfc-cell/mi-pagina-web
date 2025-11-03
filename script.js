@@ -1,16 +1,33 @@
-const photoCard = document.getElementById('photoCard');
-const cardInner = photoCard.querySelector('.card-inner');
-const enviarBtn = document.getElementById('enviarBtn');
-const respuestas = document.querySelectorAll('input[name="respuesta"]');
 
-// ✅ Ajustar altura real del contenedor en móviles
-function ajustarAlturaReal() {
-  const contenedor = document.querySelector('.fullscreen-center');
-  contenedor.style.height = `${window.innerHeight}px`;
+// ======== FONDO DE COLLAGE ======== //
+const imageUrls = [
+  'Ale1.jpeg', 'Ale2.jpeg', 'Ale3.jpeg',
+  'Ale4.jpeg', 'Ale5.jpeg', 'Ale6.jpeg',
+  'Ale7.jpeg', 'Ale8.jpeg', 'Ale9.jpeg'
+];
+
+const backgroundGrid = document.querySelector('.background-grid');
+
+// Generar imágenes de fondo
+for (let i = 0; i < 60; i++) { // más imágenes pequeñas
+  const img = document.createElement('img');
+  img.src = imageUrls[Math.floor(Math.random() * imageUrls.length)];
+  img.style.animationDelay = `${Math.random() * 5}s`;
+  backgroundGrid.appendChild(img);
 }
 
-window.addEventListener('load', ajustarAlturaReal);
-window.addEventListener('resize', ajustarAlturaReal);
+// Cambiar aleatoriamente las imágenes del fondo cada 8 segundos
+setInterval(() => {
+  const imgs = document.querySelectorAll('.background-grid img');
+  imgs.forEach(img => {
+    img.src = imageUrls[Math.floor(Math.random() * imageUrls.length)];
+  });
+}, 8000);
+
+// ======== TARJETA INTERACTIVA ======== //
+const photoCard = document.getElementById('photoCard');
+const enviarBtn = document.getElementById('enviarBtn');
+const respuestas = document.querySelectorAll('input[name="respuesta"]');
 
 // Giro solo al hacer clic en la parte frontal
 photoCard.addEventListener('click', (e) => {
@@ -34,4 +51,3 @@ enviarBtn.addEventListener('click', (e) => {
   const seleccion = document.querySelector('input[name="respuesta"]:checked').value;
   alert(`Has respondido: ${seleccion.toUpperCase()}`);
 });
-
