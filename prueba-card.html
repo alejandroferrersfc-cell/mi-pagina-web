@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarjeta centrada</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #eee;
+      font-family: sans-serif;
+    }
+
+    .photo-card {
+      width: 320px;
+      max-width: 90vw;
+      height: 420px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s ease;
+      transform-style: preserve-3d;
+    }
+
+    .photo-card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      background: white;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .card-back h4 {
+      margin-bottom: 1rem;
+    }
+
+    .form-check {
+      margin: 0 1rem;
+    }
+
+    .btn {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: #ffc107;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .d-none {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="photo-card" id="photoCard">
+    <div class="card-inner">
+      <div class="card-front">
+        <img src="Ale1.jpeg" alt="Foto" style="width:100%; height:100%; object-fit: cover;">
+      </div>
+      <div class="card-back">
+        <h4>¿Quieres salir conmigo?</h4>
+        <div style="display: flex; justify-content: center;">
+          <div class="form-check">
+            <input type="radio" name="respuesta" id="si" value="si">
+            <label for="si">Sí</label>
+          </div>
+          <div class="form-check">
+            <input type="radio" name="respuesta" id="no" value="no">
+            <label for="no">No</label>
+          </div>
+        </div>
+        <button class="btn d-none" id="enviarBtn">Enviar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const photoCard = document.getElementById('photoCard');
+    const cardInner = photoCard.querySelector('.card-inner');
+    const enviarBtn = document.getElementById('enviarBtn');
+    const respuestas = document.querySelectorAll('input[name="respuesta"]');
+
+    photoCard.addEventListener('click', (e) => {
+      if (photoCard.classList.contains('flipped')) return;
+      const clickedFront = e.target.closest('.card-front');
+      if (clickedFront) {
+        photoCard.classList.add('flipped');
+      }
+    });
+
+    respuestas.forEach(radio => {
+      radio.addEventListener('change', () => {
+        enviarBtn.classList.remove('d-none');
+      });
+    });
+
+    enviarBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const seleccion = document.querySelector('input[name="respuesta"]:checked').value;
+      alert(`Has respondido: ${seleccion.toUpperCase()}`);
+    });
+  </script>
+
+</body>
+</html>
