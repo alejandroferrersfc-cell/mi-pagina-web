@@ -3,14 +3,14 @@ const cardInner = photoCard.querySelector('.card-inner');
 const enviarBtn = document.getElementById('enviarBtn');
 const respuestas = document.querySelectorAll('input[name="respuesta"]');
 
-// ✅ Ajustar altura real del viewport en móviles
-function ajustarAltura() {
-  const alturaReal = window.innerHeight;
-  document.documentElement.style.setProperty('--altura-viewport', `${alturaReal}px`);
+// ✅ Ajustar altura real del contenedor en móviles
+function ajustarAlturaReal() {
+  const contenedor = document.querySelector('.fullscreen-center');
+  contenedor.style.height = `${window.innerHeight}px`;
 }
 
-window.addEventListener('load', ajustarAltura);
-window.addEventListener('resize', ajustarAltura);
+window.addEventListener('load', ajustarAlturaReal);
+window.addEventListener('resize', ajustarAlturaReal);
 
 // Giro solo al hacer clic en la parte frontal
 photoCard.addEventListener('click', (e) => {
@@ -34,3 +34,4 @@ enviarBtn.addEventListener('click', (e) => {
   const seleccion = document.querySelector('input[name="respuesta"]:checked').value;
   alert(`Has respondido: ${seleccion.toUpperCase()}`);
 });
+

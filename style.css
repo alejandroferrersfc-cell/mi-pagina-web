@@ -39,13 +39,14 @@ html, body {
 /* ======== TARJETA CENTRAL ======== */
 .fullscreen-center {
   position: relative;
-  min-height: 100vh; /* ✅ asegura visibilidad */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1; /* ✅ por encima del fondo */
+  z-index: 1;
   padding: 2rem 1rem;
+  overflow: hidden;
 }
+
 
 .photo-card {
   width: 320px;
