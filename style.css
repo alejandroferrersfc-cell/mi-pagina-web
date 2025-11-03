@@ -1,23 +1,16 @@
 /* ======== RESET ======== */
-body, html {
+* {
   margin: 0;
   padding: 0;
-  height: 100dvh; /* ✅ usa el alto visible real */
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
   width: 100%;
   font-family: 'Segoe UI', sans-serif;
   overflow-x: hidden;
   overflow-y: auto;
-}
-
-/* ======== TARJETA CENTRAL ======== */
-.fullscreen-center {
-  position: relative;
-  min-height: 100dvh; /* ✅ asegura que se vea en móviles */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-  padding: 2rem 1rem;
 }
 
 /* ======== FONDO DE IMÁGENES ======== */
@@ -45,11 +38,11 @@ body, html {
 /* ======== TARJETA CENTRAL ======== */
 .fullscreen-center {
   position: relative;
-  z-index: 1;
-  min-height: 100vh;
+  height: var(--altura-viewport); /* ✅ altura dinámica */
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
   padding: 2rem 1rem;
 }
 

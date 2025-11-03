@@ -3,6 +3,15 @@ const cardInner = photoCard.querySelector('.card-inner');
 const enviarBtn = document.getElementById('enviarBtn');
 const respuestas = document.querySelectorAll('input[name="respuesta"]');
 
+// ✅ Ajustar altura real del viewport en móviles
+function ajustarAltura() {
+  const alturaReal = window.innerHeight;
+  document.documentElement.style.setProperty('--altura-viewport', `${alturaReal}px`);
+}
+
+window.addEventListener('load', ajustarAltura);
+window.addEventListener('resize', ajustarAltura);
+
 // Giro solo al hacer clic en la parte frontal
 photoCard.addEventListener('click', (e) => {
   if (photoCard.classList.contains('flipped')) return;
