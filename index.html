@@ -3,18 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tarjeta centrada</title>
+  <title>Foto Interactiva</title>
   <style>
-    html, body {
+    /* ======== RESET ======== */
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
       height: 100%;
       width: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    /* ======== FONDO DE IMÁGENES ======== */
+    .background-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-auto-rows: 200px;
+      gap: 0;
+      z-index: 0;
+    }
+
+    .background-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(70%);
+    }
+
+    /* ======== TARJETA CENTRAL ======== */
+    .fullscreen-center {
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #eee;
-      font-family: sans-serif;
+      z-index: 1;
+      padding: 2rem 1rem;
+      height: 100vh;
     }
 
     .photo-card {
@@ -78,31 +115,62 @@
     .d-none {
       display: none;
     }
+
+    @media (max-width: 576px) {
+      .photo-card {
+        width: 90%;
+        height: auto;
+      }
+
+      .card-inner {
+        height: auto;
+      }
+
+      .card-front img {
+        height: auto;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <div class="photo-card" id="photoCard">
-    <div class="card-inner">
-      <div class="card-front">
-        <img src="Ale1.jpeg" alt="Foto" style="width:100%; height:100%; object-fit: cover;">
-      </div>
-      <div class="card-back">
-        <h4>¿Quieres salir conmigo?</h4>
-        <div style="display: flex; justify-content: center;">
-          <div class="form-check">
-            <input type="radio" name="respuesta" id="si" value="si">
-            <label for="si">Sí</label>
-          </div>
-          <div class="form-check">
-            <input type="radio" name="respuesta" id="no" value="no">
-            <label for="no">No</label>
-          </div>
+  <!-- FONDO DE IMÁGENES -->
+  <div class="background-grid">
+    <img src="Ale1.jpeg" alt="">
+    <img src="Ale2.jpeg" alt="">
+    <img src="Ale3.jpeg" alt="">
+    <img src="Ale4.jpeg" alt="">
+    <img src="Ale5.jpeg" alt="">
+    <img src="Ale6.jpeg" alt="">
+    <img src="Ale7.jpeg" alt="">
+    <img src="Ale8.jpeg" alt="">
+    <img src="Ale9.jpeg" alt="">
+  </div>
+
+  <!-- TARJETA CENTRAL -->
+  <main class="fullscreen-center">
+    <div class="photo-card" id="photoCard">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="Ale1.jpeg" alt="Foto" style="width:100%; height:100%; object-fit: cover;">
         </div>
-        <button class="btn d-none" id="enviarBtn">Enviar</button>
+        <div class="card-back">
+          <h4>¿Quieres salir conmigo?</h4>
+          <div style="display: flex; justify-content: center;">
+            <div class="form-check">
+              <input type="radio" name="respuesta" id="si" value="si">
+              <label for="si">Sí</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" name="respuesta" id="no" value="no">
+              <label for="no">No</label>
+            </div>
+          </div>
+          <button class="btn d-none" id="enviarBtn">Enviar</button>
+        </div>
       </div>
     </div>
-  </div>
+  </main>
 
   <script>
     const photoCard = document.getElementById('photoCard');
