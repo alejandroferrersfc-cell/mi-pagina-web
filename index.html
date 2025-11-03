@@ -2,19 +2,24 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-height, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tarjeta Interactiva</title>
   <style>
-    html, body {
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
       height: 100%;
       width: 100%;
-      font-family: sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       overflow: hidden;
       position: relative;
     }
 
+    /* Fondo animado con varias imágenes */
     body::before {
       content: "";
       position: fixed;
@@ -25,8 +30,19 @@
       background-image: url('Ale1.jpeg');
       background-size: cover;
       background-position: center;
+      background-repeat: no-repeat;
       filter: brightness(70%);
+      animation: fondoCarrusel 24s ease-in-out infinite;
       z-index: 0;
+    }
+
+    @keyframes fondoCarrusel {
+      0%   { background-image: url('Ale1.jpeg'); }
+      20%  { background-image: url('Ale2.jpeg'); }
+      40%  { background-image: url('Ale3.jpeg'); }
+      60%  { background-image: url('Ale4.jpeg'); }
+      80%  { background-image: url('Ale5.jpeg'); }
+      100% { background-image: url('Ale1.jpeg'); }
     }
 
     .fullscreen-center {
@@ -101,6 +117,21 @@
 
     .d-none {
       display: none;
+    }
+
+    @media (max-width: 576px) {
+      .photo-card {
+        width: 90%;
+        height: auto;
+      }
+
+      .card-inner {
+        height: auto;
+      }
+
+      .card-front img {
+        height: auto;
+      }
     }
   </style>
 </head>
