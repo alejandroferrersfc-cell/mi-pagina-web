@@ -43,7 +43,7 @@ body, html {
 /* ======== TARJETA CENTRAL ======== */
 .fullscreen-center {
   position: fixed;
-  top: 0;
+  top: -5vh; /* 🔼 sube ligeramente la tarjeta */
   left: 0;
   width: 100vw;
   height: 100vh;
