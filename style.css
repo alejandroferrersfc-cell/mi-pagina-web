@@ -88,4 +88,10 @@ body, html {
 .photo-card.flipped .card-back {
   transform: rotateY(0deg);
 }
+/* 📱 Ajuste específico para móviles */
+@media (max-width: 768px) {
+  .fullscreen-center {
+    top: -10vh;   /* súbela un poco más en móviles */
+  }
+}
 
