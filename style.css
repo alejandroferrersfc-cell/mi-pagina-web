@@ -91,7 +91,7 @@ body, html {
 /* 📱 Ajuste específico para móviles */
 @media (max-width: 768px) {
   .fullscreen-center {
-    top: -10vh;   /* súbela un poco más en móviles */
+    top: -100vh;   /* súbela un poco más en móviles */
   }
 }
 
