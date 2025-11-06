@@ -45,9 +45,14 @@ respuestas.forEach(radio => {
   });
 });
 
-// Acción del botón enviar
+// Acción del botón enviar con música si responde "Sí"
 enviarBtn.addEventListener('click', (e) => {
   e.stopPropagation(); // No girar tarjeta al enviar
   const seleccion = document.querySelector('input[name="respuesta"]:checked').value;
-  alert(`Has respondido: ${seleccion.toUpperCase()}`);
+  if (seleccion === 'si') {
+    document.getElementById('musicaContainer').style.display = 'block'; // 🎶 activa música
+  } else {
+    alert('¡Qué pena! 😢');
+  }
 });
+
