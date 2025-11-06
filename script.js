@@ -41,20 +41,13 @@ photoCard.addEventListener('click', (e) => {
 respuestas.forEach(radio => {
   radio.addEventListener('change', () => {
     enviarBtn.classList.remove('d-none');
-    enviarBtn.disabled = false;
   });
 });
 
-// Acción del botón enviar con música si responde "Sí"
+// Acción del botón enviar
 enviarBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  const seleccion = document.querySelector('input[name="respuesta"]:checked');
-  if (!seleccion) return;
-
-  if (seleccion.value === 'si') {
-    document.getElementById('musicaContainer').style.display = 'block';
-  } else {
-    alert('¡Qué pena! ');
-  }
+  e.stopPropagation(); // No girar tarjeta al enviar
+  const seleccion = document.querySelector('input[name="respuesta"]:checked').value;
+  alert(`Has respondido: ${seleccion.toUpperCase()}`);
 });
 
