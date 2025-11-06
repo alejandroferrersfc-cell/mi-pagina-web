@@ -1,4 +1,3 @@
-
 // ======== FONDO DE COLLAGE ======== //
 const imageUrls = [
   'Ale1.jpeg', 'Ale2.jpeg', 'Ale3.jpeg',
@@ -9,7 +8,7 @@ const imageUrls = [
 const backgroundGrid = document.querySelector('.background-grid');
 
 // Generar imágenes de fondo
-for (let i = 0; i < 60; i++) { // más imágenes pequeñas
+for (let i = 0; i < 60; i++) {
   const img = document.createElement('img');
   img.src = imageUrls[Math.floor(Math.random() * imageUrls.length)];
   img.style.animationDelay = `${Math.random() * 5}s`;
@@ -42,15 +41,18 @@ photoCard.addEventListener('click', (e) => {
 respuestas.forEach(radio => {
   radio.addEventListener('change', () => {
     enviarBtn.classList.remove('d-none');
+    enviarBtn.disabled = false;
   });
 });
 
 // Acción del botón enviar con música si responde "Sí"
 enviarBtn.addEventListener('click', (e) => {
-  e.stopPropagation(); // No girar tarjeta al enviar
-  const seleccion = document.querySelector('input[name="respuesta"]:checked').value;
-  if (seleccion === 'si') {
-    document.getElementById('musicaContainer').style.display = 'block'; // 🎶 activa música
+  e.stopPropagation();
+  const seleccion = document.querySelector('input[name="respuesta"]:checked');
+  if (!seleccion) return;
+
+  if (seleccion.value === 'si') {
+    document.getElementById('musicaContainer').style.display = 'block';
   } else {
     alert('¡Qué pena! 😢');
   }
