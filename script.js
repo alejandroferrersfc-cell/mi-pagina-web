@@ -54,7 +54,7 @@ enviarBtn.addEventListener('click', (e) => {
   if (seleccion.value === 'si') {
     document.getElementById('musicaContainer').style.display = 'block';
   } else {
-    alert('¡Qué pena! 😢');
+    alert('¡Qué pena! ');
   }
 });
 
